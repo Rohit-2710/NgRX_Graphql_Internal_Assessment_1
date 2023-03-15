@@ -20,24 +20,25 @@ export class ListTodoComponent implements OnInit{
    status:string=''
    todos:any=[]
   constructor(private todoService: TodoserviceService, private store:Store<AppState>) {}
-  ngOnInit():void{
-    this.todoService.listTodos().subscribe((data)=>{
+  async ngOnInit():Promise<void>{
+    await this.todoService.listTodos().subscribe((data)=>{
       console.log(data)
       this.store.dispatch(getTodo({todos:data}))
-      this.store.select(selectedTodos).pipe(switchMap((todos)=>{
-        if(todos){
-          return of(todos);
-        }else{
-          return this.store.select(selectedTodos)
-        }
+    })
+    this.store.select(selectedTodos).pipe(switchMap((todos)=>{
+      if(todos){
+        return of(todos);
+      }else{
+        return this.store.select(selectedTodos)
+      }
 
-      })).subscribe((value)=>{
-        this.todos=value
-      })
+    })).subscribe((value)=>{
+      this.todos=value
     })
   }
   deleteTodo=(id:string)=>{
      this.todoService.delete(id).subscribe()
      this.store.dispatch(deleteTodo({id}))
+     window.location.reload()
   }
 }

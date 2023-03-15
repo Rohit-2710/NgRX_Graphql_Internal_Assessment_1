@@ -32,13 +32,13 @@ const mutations = {
     };
   },
   updateTodo: async (_, { input }) => {
-    const { id, ...body } = input;
-    const todo = await Todo.findById(id);
+    const { _id, ...body } = input;
+    const todo = await Todo.findById(_id);
     if (!todo) {
       throw new Error("No entry found for the given ID");
     }
     const updated = await Todo.findOneAndUpdate(
-      { _id: id },
+      { _id: _id },
       { $set: body },
       { new: true }
     );

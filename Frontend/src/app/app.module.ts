@@ -11,12 +11,15 @@ import {StoreModule} from '@ngrx/store'
 import { FormsModule } from '@angular/forms';
 import { reducers } from '../../Store/index';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { UpdateTodoComponent } from './components/update-todo/update-todo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddTodoComponent,
-    ListTodoComponent
+    ListTodoComponent,
+    UpdateTodoComponent
+    
   ],
   imports: [
     BrowserModule,

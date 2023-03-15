@@ -18,7 +18,10 @@
                     <tr *ngFor="let todo of todos" >
                         <td *ngIf="todo.status==='FAILED'">{{todo.todo}}</td>
                         <td *ngIf="todo.status==='FAILED'">{{todo.due}}</td>
-                        <td *ngIf="todo.status==='FAILED'"><button class="btn btn-danger"(click)="deleteTodo(todo._id)" >Delete</button></td>
+                        <td *ngIf="todo.status==='FAILED'">
+                          <button class="btn btn-danger"(click)="deleteTodo(todo._id)" >Delete</button>
+                          <button class="btn btn-primary" [routerLink]="['/update',todo._id]">Update</button>
+                        </td>
                       </tr>
                 
              
@@ -42,7 +45,10 @@
                     <tr *ngFor="let todo of todos" >
                         <td *ngIf="todo.status==='PENDING'">{{todo.todo}}</td>
                         <td *ngIf="todo.status==='PENDING'">{{todo.due}}</td>
-                        <td *ngIf="todo.status==='PENDING'"><button class="btn btn-danger" (click)="deleteTodo(todo._id)">Delete</button></td>
+                        <td *ngIf="todo.status==='PENDING'">
+                          <button class="btn btn-danger" (click)="deleteTodo(todo._id)">Delete</button>
+                          <button class="btn btn-primary" [routerLink]="['/update',todo._id]">Update</button>
+                        </td>
                       </tr>
                 
              
@@ -66,7 +72,10 @@
                         <tr *ngFor="let todo of todos" >
                             <td *ngIf="todo.status==='DONE'">{{todo.todo}}</td>
                             <td *ngIf="todo.status==='DONE'">{{todo.due}}</td>
-                            <td *ngIf="todo.status==='DONE'"><button class="btn btn-danger" (click)="deleteTodo(todo._id)">Delete</button></td>
+                            <td *ngIf="todo.status==='DONE'">
+                              <button class="btn btn-danger" (click)="deleteTodo(todo._id)">Delete</button>
+                              <button class="btn btn-primary" [routerLink]="['/update',todo._id]">Update</button>
+                            </td>
                           </tr>
                     
                  

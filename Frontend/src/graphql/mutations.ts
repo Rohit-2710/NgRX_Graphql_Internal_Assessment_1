@@ -21,3 +21,14 @@ mutation deleteTodo($id: String!){
   }
 }
 `
+export const UPDATE_TODO=gql`
+mutation updateTodo($input: UpdateTodoInput!){
+  updateTodo(input: $input) {
+    _id
+    todo
+    due
+    status
+    
+  }
+}
+`

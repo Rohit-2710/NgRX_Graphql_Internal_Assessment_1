@@ -18,13 +18,13 @@ export class AddTodoComponent {
   submitted:boolean=false
 
   constructor(private store:Store, private todoService:TodoserviceService){}
-  add=()=>{
+  add=async ()=>{
     const data={
       todo:this.todo.todo,
       due:this.todo.due,
       status:this.todo.status
     }
-    this.todoService.addTodo(data).subscribe()
+    await this.todoService.addTodo(data).subscribe()
     this.store.dispatch(addTodo({todo:data}))
     this.submitted=true
   }

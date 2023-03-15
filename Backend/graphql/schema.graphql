@@ -32,7 +32,7 @@ input AddTodoInput {
 }
 
 input UpdateTodoInput {
-  id: String!
+  _id: String!
   todo: String!
   due: String!
   status: String
