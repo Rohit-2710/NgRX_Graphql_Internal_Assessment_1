@@ -1,0 +1,44 @@
+type Todo {
+  _id: ID!
+  todo: String!
+  due: String!
+  status: String
+}
+type message {
+  message: String!
+}
+
+type Query {
+  todos: [Todo]
+  getTodo(_id: String!): Todo
+  searchTodo(title: String!): [Todo]
+  greeting: String
+}
+
+type Mutation {
+  addTodo(input: AddTodoInput!): Todo!
+  updateTodo(input: UpdateTodoInput!): Todo!
+  deleteTodo(_id: String!): Todo
+}
+
+type Subscription {
+  todo: SubscriptionPayload!
+}
+
+input AddTodoInput {
+  todo: String!
+  due: String!
+  status: String
+}
+
+input UpdateTodoInput {
+  id: String!
+  todo: String!
+  due: String!
+  status: String
+}
+
+type SubscriptionPayload {
+  mutation: String!
+  data: Todo!
+}
